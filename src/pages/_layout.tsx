@@ -14,7 +14,7 @@ const routeList: ItemProperties[] = [
     icon: <UsersIcon />,
   },
   {
-    route: "/ref",
+    route: "/admin/ref",
     name: "Referee",
     icon: <HandRaisedIcon />,
   },
