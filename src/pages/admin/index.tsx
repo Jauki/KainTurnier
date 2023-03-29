@@ -7,7 +7,6 @@ const DynamicComponentWithNoSSR = dynamic(
 )
 
 export default function Home() {
-
   return (
     <Layout>
       <DynamicComponentWithNoSSR/>

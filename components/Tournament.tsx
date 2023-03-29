@@ -1,4 +1,4 @@
-import { SingleEliminationBracket, Match, SVGViewer } from '@g-loot/react-tournament-brackets';
+import { SingleEliminationBracket, Match, SVGViewer, createTheme } from "@g-loot/react-tournament-brackets";
 
 const matches = [
   {
@@ -97,7 +97,7 @@ const matches = [
     "id": 19759,
     "nextMatchId": 19757,
     "tournamentRoundText": "1",
-    "startTime": "2021-05-30",
+    "startTime": "20:20:19",
     "state": "SCHEDULED",
     "participants": [
       {
@@ -119,13 +119,53 @@ const matches = [
     ]
   }
 ]
+const WhiteTheme = createTheme({
+  // colors
+  textColor: {
+    main: '#FFFFFF',
+    highlighted: '#4A4A4A',
+    dark: '#4A4A4A',
+  },
+  matchBackground: {
+    wonColor: '#fb923c',
+    lostColor: '#FFFFFF',
+  },
+  score: {
+    background: {
+      wonColor: '#f97316',
+      lostColor: '#fed7aa',
+    },
+    text: {
+      highlightedWonColor: '#28A745',
+      highlightedLostColor: '#DC3545',
+    },
+  },
+  border: {
+    color: '#CED4DA',
+    highlightedColor: '#fb923c',
+  },
+  roundHeader: {
+    backgroundColor: '#fb923c',
+    fontColor: '#FFFFFF',
+  },
+  connectorColor: '#CED4DA',
+  connectorColorHighlight: '#fb923c',
+  svgBackground: '#FAFAFA',
+
+  // sizes
+  borderRadius: '4px',
+  borderWidth: '2px',
+  headerHeight: '40px',
+  scoreWidth: '60px',
+});
 
 
 const Tournament = () => {
   return <>
-  <SingleEliminationBracket
+    <SingleEliminationBracket
         matches={matches}
         matchComponent={Match}
+        theme={WhiteTheme}
       /></>
 }
 

@@ -36,6 +36,13 @@ export type GameProperties = {
   pointsA: number,
   pointsB: number,
 }
+
+function formatTime(date: Date) {
+  const hours = date.getHours();
+  const minutes = date.getMinutes();
+  return `${hours}:${minutes < 10 ? '0' : ''}${minutes}`;
+}
+
 const Game = (props: GameProperties) => {
   const router = useRouter();
 
@@ -59,13 +66,13 @@ const Game = (props: GameProperties) => {
   }
 
   return (
-    <div className="w-full py-4 px-10 rounded-lg bg-slate-50 hover:bg-slate-100 flex items-center gap-10">
+    <div className="w-full py-4 px-10 rounded-lg bg-slate-50 hover:bg-slate-100 justify-between sm:justify-start flex items-center gap-10">
       {getStatus(props.status)}
-      <div className="flex flex-col">
-        <span className="font-medium">{props.start.getUTCHours()} - {props.end.getUTCHours()}</span>
+      <div className="flex-col hidden sm:flex">
+        <span className="font-medium">{formatTime(props.start)} - {formatTime(props.end)}</span>
         <div className="text-sm text-gray-500">{props.status}</div>
       </div>
-      <div className="ml-16 flex flex-col">
+      <div className="sm:ml-16 flex flex-col">
         <div className="flex flex-row gap-1 items-center">
           <div className="w-12 bg-slate-100 h-12 flex justify-center items-center rounded-full">
             <img src={props.teamA.pic_url} alt={props.teamA.name} className="object-cover" />
@@ -87,14 +94,12 @@ const Game = (props: GameProperties) => {
         <span className="ml-14 text-lg text-orange-500 font-bold">{props.pointsB}</span>
       </div>
 
-      <div className="ml-16">
+      <div className="ml-16 hidden sm:block">
         Field: <span className="text-orange-500">{props.field}</span>
       </div>
-      <div className="ml-16">
+      <div className="ml-16 hidden sm:block">
         Tournament Phase: <span className="text-orange-500">{props.phase.name}</span>
       </div>
-
-      {router.pathname.includes("/admin") && <GameModal/>}
     </div>
   );
 };
