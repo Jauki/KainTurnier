@@ -1,6 +1,6 @@
 import React from "react";
 import Game, { GameProperties } from "./Game";
-import games from "@/pages/games";
+import games from "@/pages/admin/games";
 
 /**
  Author: julianjauk <jauk.j@proton.me>
@@ -16,7 +16,7 @@ const GameView = (props: GameViewProperties) => {
   return (
     <div className="col-span-6 w-full h-full overflow-scroll flex flex-col gap-1">
       {
-        props.games.map((game) =>  <Game teamA={game.teamA} teamB={game.teamB} phase={game.phase} field={game.field} status={game.status} start={game.start} end={game.end} pointsA={game.pointsA} pointsB={game.pointsB}/>)
+        props.games.map((game) =>  <Game key={Math.random().toString(23)} teamA={game.teamA} teamB={game.teamB} phase={game.phase} field={game.field} status={game.status} start={game.start} end={game.end} pointsA={game.pointsA} pointsB={game.pointsB}/>)
       }
     </div>
   );

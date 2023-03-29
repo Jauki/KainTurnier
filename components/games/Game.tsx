@@ -1,5 +1,7 @@
 import React from "react";
 import { CheckIcon } from "@heroicons/react/24/solid";
+import { useRouter } from "next/router";
+import GameModal from "./GameModal";
 
 /**
  Author: julianjauk <jauk.j@proton.me>
@@ -16,12 +18,12 @@ export enum Status {
 export type GameProperties = {
   teamA : {
     name : string,
-    points : 0,
+    points : number,
     pic_url : string
   },
   teamB : {
     name : string,
-    points : 0,
+    points : number,
     pic_url : string
   },
   phase : {
@@ -35,6 +37,7 @@ export type GameProperties = {
   pointsB: number,
 }
 const Game = (props: GameProperties) => {
+  const router = useRouter();
 
   const getStatus = (status: Status) => {
     switch (status){
@@ -90,6 +93,8 @@ const Game = (props: GameProperties) => {
       <div className="ml-16">
         Tournament Phase: <span className="text-orange-500">{props.phase.name}</span>
       </div>
+
+      {router.pathname.includes("/admin") && <GameModal/>}
     </div>
   );
 };

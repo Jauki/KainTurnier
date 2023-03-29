@@ -1,7 +1,7 @@
 import React from "react";
 import Layout from "@/pages/_layout";
-import GameView from "../../components/games/GameView";
-import { GameProperties, Status } from "../../components/games/Game";
+import GameView from "../../../components/games/GameView";
+import { GameProperties, Status } from "../../../components/games/Game";
 
 /**
  Author: julianjauk <jauk.j@proton.me>

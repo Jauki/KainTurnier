@@ -4,12 +4,12 @@ import { SideBar } from "../../components/SideBar";
 
 const routeList: ItemProperties[] = [
   {
-    route: "/",
+    route: "/admin/",
     name: "Home",
     icon: <HomeIcon />,
   },
   {
-    route: "/teams",
+    route: "/admin/teams",
     name: "Teams",
     icon: <UsersIcon />,
   },
@@ -19,7 +19,7 @@ const routeList: ItemProperties[] = [
     icon: <HandRaisedIcon />,
   },
   {
-    route: "/games",
+    route: "/admin/games",
     name: "Games",
     icon: <SignalIcon />,
   },

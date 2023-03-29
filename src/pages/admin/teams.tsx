@@ -1,6 +1,6 @@
-import { TeamModal } from "../../components/team/TeamModal";
-import TeamWrapper from "../../components/team/TeamWrapper";
-import Layout from "./_layout"
+import { TeamModal } from "../../../components/team/TeamModal";
+import TeamWrapper from "../../../components/team/TeamWrapper";
+import Layout from "../_layout"
 
 
 const team = () => {
