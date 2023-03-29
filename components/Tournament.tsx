@@ -1,4 +1,7 @@
 import { SingleEliminationBracket, Match, SVGViewer, createTheme } from "@g-loot/react-tournament-brackets";
+import RefGameModal from "./ref/RefGameModal";
+import React from "react";
+import Group from "./common/Group";
 
 const matches = [
   {
@@ -161,12 +164,18 @@ const WhiteTheme = createTheme({
 
 
 const Tournament = () => {
-  return <>
+  // todo: implement tournament thing fetches
+
+  return <div className="flex flex-col gap-10">
     <SingleEliminationBracket
         matches={matches}
         matchComponent={Match}
         theme={WhiteTheme}
-      /></>
+      />
+    <div className="flex flex-row gap-2">
+      <Group/>
+    </div>
+  </div>
 }
 
 

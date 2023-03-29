@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import { CheckIcon } from "@heroicons/react/24/solid";
 import { useRouter } from "next/router";
 import GameModal from "./GameModal";
+import RefGameModal from "../ref/RefGameModal";
 
 /**
  Author: julianjauk <jauk.j@proton.me>
@@ -44,6 +45,7 @@ function formatTime(date: Date) {
 }
 
 const Game = (props: GameProperties) => {
+  const [IsReferee, setIsReferee] = useState(false);
   const router = useRouter();
 
   const getStatus = (status: Status) => {
@@ -65,8 +67,12 @@ const Game = (props: GameProperties) => {
     }
   }
 
+  const handleClick = () => {
+    router.pathname.includes('/admin') && setIsReferee(true);
+  }
+
   return (
-    <div className="w-full py-4 px-10 rounded-lg bg-slate-50 hover:bg-slate-100 justify-between sm:justify-start flex items-center gap-10">
+    <div className="w-full py-4 px-10 rounded-lg bg-slate-50 hover:bg-slate-100 justify-between sm:justify-start flex items-center gap-10" onClick={() => handleClick()}>
       {getStatus(props.status)}
       <div className="flex-col hidden sm:flex">
         <span className="font-medium">{formatTime(props.start)} - {formatTime(props.end)}</span>

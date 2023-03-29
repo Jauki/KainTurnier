@@ -1,10 +1,5 @@
 import React, { useState } from "react";
 import { useRouter } from "next/router";
-import { sign } from "jsonwebtoken";
-import { serialize } from "cookie";
-import { cookies } from "next/headers";
-
-const secret = process.env.SECRET;
 /**
  Author: julianjauk <jauk.j@proton.me>
  Date: 28.03.23
@@ -17,40 +12,15 @@ function LoginForm() {
  const router = useRouter();
  const handleSubmit = async (event: any) => {
   event.preventDefault();
-  try {
-   const response = await fetch("/api/login", {
-    method: "POST",
-    headers: {
-     "Content-Type": "application/json",
-    },
-    body: JSON.stringify({ username, password }),
-   });
-   const data = await response.json();
-   console.log(data);
-   if(response.ok) {
-    const token = sign(
-      {
-       exp: Math.floor(Date.now() / 1000) + 60 * 60 * 24 * 30, // 30 days
-       username: username,
-      },
-      secret!
-    );
 
-    const serialised = serialize("TOKEN", token, {
-     httpOnly: true,
-     secure: process.env.NODE_ENV !== "development",
-     sameSite: "strict",
-     maxAge: 60 * 60 * 24 * 30,
-     path: "/",
-    });
-
-   const cookieStore = cookies();
-   cookieStore.set('Set-Cookie', serialised)
-    await router.push("/");
-   }
-  } catch (error) {
-   console.error(error);
-  }
+  const user = {username, password};
+  await fetch("/api/login", {
+     method: "POST",
+     body: JSON.stringify(user),
+     headers: {
+       "Content-Type": "application/json",
+     },
+   })
  };
 
  return (
