@@ -94,9 +94,9 @@ const Game = (props: GameProperties) => {
       </div>
       <div className="flex flex-col w-40 items-center justify-center">
         <div className="flex flex-row gap-1 items-center">
-          <div className="w-12 bg-slate-100 h-12 flex justify-center items-center rounded-full">
-            <img src={props.teamB.pic_url} alt={props.teamB.name} className="object-cover" />
-          </div>
+          {/*<div className="w-12 bg-slate-100 h-12 flex justify-center items-center rounded-full">*/}
+          {/*  <img src={props.teamB.pic_url} alt={props.teamB.name} className="object-cover" />*/}
+          {/*</div>*/}
           <div className="text-lg font-medium">{props.teamB.name}</div>
         </div>
         <div className="text-xs text-gray-500 mb-2 text-center mx-auto">{props.teamB.school}</div>
